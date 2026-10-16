@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= artist.name %> / Artist explorer</title>
+</head>
+<body>
+    <header><a href="/">Back to search</a></header>
+    <main>
+        <h1><%= artist.name %></h1>
+        <% if (artist.images.length > 0) { %>
+            <img class="artist-photo" src="<%= artist.images[0].url %>" alt="<%= artist.name %>">
+        <% } %>
+
+        <h2>A few releases</h2>
+        <p>Showing <%= releases.length %> albums and singles from Spotify.</p>
+
+        <ul class="releases">
+            <% releases.forEach((release) => { %>
+                <li>
+                    <% if (release.images.length > 0) { %>
+                        <img class="album-cover" src="<%= release.images[0].url %>" alt="Cover of <%= release.name %>">
+                    <% } %>
+                    <h3><%= release.name %></h3>
+                    <p><%= release.album_type %> / <%= release.release_date %></p>
+                    <p><%= release.total_tracks %> tracks</p>
+                </li>
+            <% }) %>
+        </ul>
+    </main>
+</body>
+</html>
